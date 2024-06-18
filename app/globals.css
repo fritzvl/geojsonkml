@@ -1,3 +1,9 @@
+/* Global CSS (optional) */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans');
+
+/* Optional CSS for @react-google-maps/api components */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
