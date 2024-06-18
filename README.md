@@ -1,3 +1,3 @@
 ## Getting Started
 
-[image]: ./screenshot.png
+![image](./screenshot.png)
