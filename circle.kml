@@ -15,5 +15,31 @@
             </outerBoundaryIs>
           </Polygon>
         </Placemark>
+        <Placemark>
+          <name>Point at lat: -3.745, lng: -38.523</name>
+          <Point>
+            <coordinates>-38.523,-3.745,0</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Line starting at lat: -3.745, lng: -38.523</name>
+          <LineString>
+            <coordinates>-38.523,-3.745,0 -38.423,-3.645,0</coordinates>
+          </LineString>
+        </Placemark>
+      <Placemark>
+          <name>Polygon</name>
+          <Polygon>
+            <extrude>1</extrude>
+            <altitudeMode>relativeToGround</altitudeMode>
+            <outerBoundaryIs>
+              <LinearRing>
+                <coordinates>
+                  -38.523,-3.745,0 -38.423,-3.745,0 -38.423,-3.645,0 -38.523,-3.645,0 -38.523,-3.745,0
+                </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </Placemark>
       </Document>
     </kml>

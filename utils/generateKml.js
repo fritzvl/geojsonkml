@@ -1,5 +1,4 @@
 const turf = require('@turf/turf');
-const fs = require('fs');
 
 function generateKml(lat, lng, radius) {
     // Define the center of the circle
@@ -16,6 +15,23 @@ function generateKml(lat, lng, radius) {
 
     // Convert the coordinates to a KML-compatible format
     const kmlCoordinates = coordinates.map(coord => `${coord[0]},${coord[1]},0`).join(' ');
+
+    // Define a point
+    const point = `${lng},${lat},0`;
+
+    // Define a line
+    const line = `${lng},${lat},0 ${lng+0.1},${lat+0.1},0`;
+
+    // Define a polygon
+    const polygonCoordinates = [
+        [lng, lat, 0],
+        [lng + 0.1, lat, 0],
+        [lng + 0.1, lat + 0.1, 0],
+        [lng, lat + 0.1, 0],
+        [lng, lat, 0] // Repeat the first point to close the polygon
+    ].map(coord => coord.join(',')).join(' ');
+
+
 
     // Insert the coordinates into the KML template
     const kml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -35,6 +51,32 @@ function generateKml(lat, lng, radius) {
             </outerBoundaryIs>
           </Polygon>
         </Placemark>
+        <Placemark>
+          <name>Point at lat: ${lat}, lng: ${lng}</name>
+          <Point>
+            <coordinates>${point}</coordinates>
+          </Point>
+        </Placemark>
+        <Placemark>
+          <name>Line starting at lat: ${lat}, lng: ${lng}</name>
+          <LineString>
+            <coordinates>${line}</coordinates>
+          </LineString>
+        </Placemark>
+      <Placemark>
+          <name>Polygon</name>
+          <Polygon>
+            <extrude>1</extrude>
+            <altitudeMode>relativeToGround</altitudeMode>
+            <outerBoundaryIs>
+              <LinearRing>
+                <coordinates>
+                  ${polygonCoordinates}
+                </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </Placemark>
       </Document>
     </kml>`;
 
@@ -42,4 +84,3 @@ function generateKml(lat, lng, radius) {
 }
 
 module.exports = generateKml;
-
